@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brixton University College</title>
+    <style>
+        :root {
+            --primary-color: #0b2545;
+            --secondary-color: #134074;
+            --accent-color: #8d0801;
+            --bg-light: #f4f6f8;
+            --text-dark: #333333;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-area img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+        }
+        .logo-text h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        .logo-text p {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #d1d5db;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #93c5fd;
+        }
+        .hero {
+            background: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.85)), url('brixton.jpeg') center/cover no-repeat;
+            color: #ffffff;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .btn {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #6b0601;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section {
+            background: #ffffff;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 0.5rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="brixton.jpeg" alt="Brixton University College Logo">
+            <div class="logo-text">
+                <h1>Brixton University College</h1>
+                <p>Quality, Fortitude and Excellence</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Bio-data</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#lms">Teaching Platform</a></li>
+                <li><a href="#payments">Payments</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Welcome to Brixton University College</h2>
+        <p>"Quality, Fortitude and Excellence"</p>
+        <a href="#admissions" class="btn">Apply For Registration</a>
+    </section>
+
+    <div class="container">
+        
+        <!-- Bio-Data Section -->
+        <section id="about" class="section">
+            <h3>Institution Bio-data</h3>
+            <p>Brixton University College is a premier institution dedicated to delivering higher education rooted in quality instruction, academic fortitude, and professional excellence. Our integrated digital framework empowers learners globally to access accredited programs, interact with leading faculty, and manage their academic lifecycles seamlessly online.</p>
+        </section>
+
+        <!-- Admissions & Registration Section -->
+        <section id="admissions" class="section">
+            <h3>Online Recruitment & Student Registration</h3>
+            <p>Join our upcoming academic intake by filling out the prospective student application form below.</p>
+            <br>
+            <form>
+                <div class="grid-2">
+                    <div>
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" placeholder="Enter first name" required>
+                    </div>
+                    <div>
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" placeholder="Enter last name" required>
+                    </div>
+                </div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter active email address" required>
+                <label for="program">Select Program</label>
+                <select id="program">
+                    <option value="bsc">Bachelor of Science Programs</option>
+                    <option value="ba">Bachelor of Arts & Humanities</option>
+                    <option value="mba">Master of Business Administration (MBA)</option>
+                </select>
+                <button type="submit" class="btn">Submit Application</button>
+            </form>
+        </section>
+
+        <!-- Teaching Platform (LMS) Section -->
+        <section id="lms" class="section">
+            <h3>Virtual Teaching Platform (Student Portal)</h3>
+            <p>Enrolled students can log in to access live lectures, module contents, coursework assignments, and online interaction channels.</p>
+            <br>
+            <form style="max-width: 400px;">
+                <label for="student_id">Student ID / Username</label>
+                <input type="text" id="student_id" placeholder="Enter Student ID" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <button type="submit" class="btn">Access Portal</button>
+            </form>
+        </section>
+
+        <!-- Online Payments Section -->
+        <section id="payments" class="section">
+            <h3>Online Fee Payments</h3>
+            <p>Securely clear tuition, registration, and miscellaneous institutional fees using our integrated payment gateway.</p>
+            <br>
+            <form style="max-width: 500px;">
+                <label for="pay_id">Student ID / Application Reference</label>
+                <input type="text" id="pay_id" placeholder="Enter ID or Reference" required>
+                <label for="fee_type">Fee Category</label>
+                <select id="fee_type">
+                    <option value="tuition">Tuition Fee</option>
+                    <option value="registration">Registration Fee</option>
+                    <option value="exam">Examination Fee</option>
+                </select>
+                <label for="amount">Amount ($)</label>
+                <input type="number" id="amount" placeholder="0.00" required>
+                <button type="submit" class="btn">Proceed to Secure Payment</button>
+            </form>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h3>Contact Us</h3>
+            <p>For inquiries, admissions support, and institutional communications, reach out through our official email addresses:</p>
+            <br>
+            <ul style="list-style: none;">
+                <li><strong>Primary Email:</strong> brixtoncolllege@gmail.com</li>
+                <li><strong>Alternative Email:</strong> brixtoncollege@yahoo.com</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Brixton University College. All rights reserved.</p>
+        <p>Quality, Fortitude and Excellence</p>
+    </footer>
+
+</body>
+</html>
