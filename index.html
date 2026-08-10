@@ -317,22 +317,21 @@
             <section id="admissions" class="section">
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
-                <!-- Form configured to send application details directly to lisotech@yahoo.com using Formspree (or mailto fallback) -->
-                <form action="https://formspree.io/f/lisotech@yahoo.com" method="POST" id="applicationForm">
+                <form id="applicationForm">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
+                    <input type="text" id="fname" placeholder="Enter first name" required>
                     
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Enter last name" required>
+                    <input type="text" id="lname" placeholder="Enter last name" required>
 
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter active email address" required>
+                    <input type="email" id="email" placeholder="Enter active email address" required>
                     
                     <label for="program">Select Program</label>
-                    <select id="program" name="program">
-                        <option value="bsc">Bachelor of Science Programs</option>
-                        <option value="ba">Bachelor of Arts & Humanities</option>
-                        <option value="mba">Master of Business Administration (MBA)</option>
+                    <select id="program">
+                        <option value="Bachelor of Science Programs">Bachelor of Science Programs</option>
+                        <option value="Bachelor of Arts & Humanities">Bachelor of Arts & Humanities</option>
+                        <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
                     </select>
                     <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
                 </form>
@@ -410,19 +409,28 @@
             });
         });
 
-        // Handle form submission to mailto client-side fallback/immediate trigger
+        // Immediately trigger a direct mailto application dispatch to lisotech@yahoo.com on submission click
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
             const email = document.getElementById('email').value;
             const program = document.getElementById('program').value;
 
-            // Creates a real mailto link payload to trigger user's mail client instantly with application details
-            const subject = encodeURIComponent('New Student Application - ' + fname + ' ' + lname);
-            const body = encodeURIComponent('New application submitted:\n\nName: ' + fname + ' ' + lname + '\nEmail: ' + email + '\nProgram: ' + program);
-            
-            // Open user's email client addressed directly to lisotech@yahoo.com
-            window.location.href = 'mailto:lisotech@yahoo.com?subject=' + subject + '&body=' + body;
+            const recipient = 'lisotech@yahoo.com';
+            const subject = encodeURIComponent('New Student Application Submission');
+            const body = encodeURIComponent(
+                'New Application Details:\n\n' +
+                'First Name: ' + fname + '\n' +
+                'Last Name: ' + lname + '\n' +
+                'Applicant Email: ' + email + '\n' +
+                'Selected Program: ' + program + '\n\n' +
+                'Submitted via Brixton University College Portal.'
+            );
+
+            // Open the client mail system immediately pointing to lisotech@yahoo.com
+            window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
         });
     </script>
 
