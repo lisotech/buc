@@ -197,6 +197,34 @@
             font-weight: 500;
             font-size: 0.85rem;
         }
+        
+        /* Dashboard view toggle styling */
+        .hidden {
+            display: none !important;
+        }
+        .dashboard-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        .dashboard-box h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        .update-item {
+            background: #ffffff;
+            padding: 0.75rem;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 0.75rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .update-item small {
+            color: #64748b;
+        }
+
         footer {
             background-color: var(--primary-color);
             color: #ffffff;
@@ -338,19 +366,57 @@
                 </form>
             </section>
 
-            <!-- Teaching Platform (LMS) Section -->
+            <!-- Teaching Platform (LMS) Section with Student Portal Dashboard -->
             <section id="lms" class="section">
                 <h3>Virtual Teaching Platform</h3>
-                <p style="margin-bottom: 1rem;">Enrolled students log in to access live lectures, modules, and coursework.</p>
-                <form>
-                    <label for="student_id">Student ID / Username</label>
-                    <input type="text" id="student_id" placeholder="Enter Student ID" required>
-                    
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter Password" required>
-                    
-                    <button type="submit" class="btn" style="width: 100%;">Access Portal</button>
-                </form>
+                
+                <!-- Login Form View -->
+                <div id="lmsLoginFormContainer">
+                    <p style="margin-bottom: 1rem;">Enrolled students log in to access live lectures, modules, and coursework.</p>
+                    <form id="lmsLoginForm">
+                        <label for="student_id">Student ID / Username</label>
+                        <input type="text" id="student_id" placeholder="Enter Student ID (e.g. BUC2026)" required>
+                        
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter Password" required>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Access Portal</button>
+                    </form>
+                </div>
+
+                <!-- Student Portal Dashboard View (Hidden by default) -->
+                <div id="studentDashboard" class="hidden">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color);">Welcome, <span id="displayStudentId">Student</span>!</h4>
+                        <button type="button" id="logoutBtn" class="btn" style="background-color: #64748b; padding: 0.3rem 0.8rem; font-size: 0.8rem;">Log Out</button>
+                    </div>
+
+                    <!-- Lessons & Modules Container -->
+                    <div class="dashboard-box">
+                        <h4>📚 Current Enrolled Lessons</h4>
+                        <ul style="list-style-type: disc; padding-left: 1.2rem; font-size: 0.9rem;">
+                            <li><strong>Module 1:</strong> Advanced Academic Research Methodologies</li>
+                            <li><strong>Module 2:</strong> Professional Ethics and Institutional Governance</li>
+                            <li><strong>Module 3:</strong> Digital Infrastructure & Applied Software Engineering</li>
+                        </ul>
+                    </div>
+
+                    <!-- Announcements & Updates Container -->
+                    <div class="dashboard-box" style="margin-top: 1rem;">
+                        <h4>📢 Institutional Updates & Notices</h4>
+                        <div class="update-item">
+                            <p><strong>Semester Examination Timetables Released</strong></p>
+                            <small>Posted: August 10, 2026</small>
+                            <p style="font-size: 0.85rem; margin-top: 0.2rem;">Final assessment schedules are now available for download under your respective faculty portals.</p>
+                        </div>
+                        <div class="update-item">
+                            <p><strong>Virtual Library Maintenance Notice</strong></p>
+                            <small>Posted: August 8, 2026</small>
+                            <p style="font-size: 0.85rem; margin-top: 0.2rem;">Scheduled server upgrades will take place this coming Saturday from 00:00 to 04:00 CAT.</p>
+                        </div>
+                    </div>
+                </div>
+
             </section>
 
             <!-- Online Payments Section -->
@@ -425,6 +491,30 @@
             
             // Open WhatsApp chat with prefilled application details in a new tab while Formspree submission proceeds
             window.open(whatsappURL, '_blank');
+        });
+
+        // Student Portal Login / Dashboard Controller
+        const lmsLoginForm = document.getElementById('lmsLoginForm');
+        const lmsLoginFormContainer = document.getElementById('lmsLoginFormContainer');
+        const studentDashboard = document.getElementById('studentDashboard');
+        const displayStudentId = document.getElementById('displayStudentId');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        lmsLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const studentIdInput = document.getElementById('student_id').value.trim();
+            
+            if (studentIdInput !== '') {
+                displayStudentId.textContent = studentIdInput;
+                lmsLoginFormContainer.classList.add('hidden');
+                studentDashboard.classList.remove('hidden');
+            }
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            lmsLoginForm.reset();
+            studentDashboard.classList.add('hidden');
+            lmsLoginFormContainer.classList.remove('hidden');
         });
     </script>
 
