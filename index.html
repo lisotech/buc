@@ -317,18 +317,20 @@
             <section id="admissions" class="section">
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
-                <form id="applicationForm">
+                
+                <!-- Real direct submission setup routing data to lisotech@yahoo.com via Formspree -->
+                <form action="https://formspree.io/f/lisotech@yahoo.com" method="POST" id="applicationForm">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" placeholder="Enter first name" required>
+                    <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
                     
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" placeholder="Enter last name" required>
+                    <input type="text" id="lname" name="lastname" placeholder="Enter last name" required>
 
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="Enter active email address" required>
+                    <input type="email" id="email" name="email" placeholder="Enter active email address" required>
                     
                     <label for="program">Select Program</label>
-                    <select id="program">
+                    <select id="program" name="program">
                         <option value="Bachelor of Science Programs">Bachelor of Science Programs</option>
                         <option value="Bachelor of Arts & Humanities">Bachelor of Arts & Humanities</option>
                         <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
@@ -409,28 +411,19 @@
             });
         });
 
-        // Immediately trigger a direct mailto application dispatch to lisotech@yahoo.com on submission click
+        // Instant email submission client action script trigger fallback
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
             const email = document.getElementById('email').value;
             const program = document.getElementById('program').value;
 
-            const recipient = 'lisotech@yahoo.com';
-            const subject = encodeURIComponent('New Student Application Submission');
-            const body = encodeURIComponent(
-                'New Application Details:\n\n' +
-                'First Name: ' + fname + '\n' +
-                'Last Name: ' + lname + '\n' +
-                'Applicant Email: ' + email + '\n' +
-                'Selected Program: ' + program + '\n\n' +
-                'Submitted via Brixton University College Portal.'
-            );
-
-            // Open the client mail system immediately pointing to lisotech@yahoo.com
-            window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+            // Creates an instant mailto protocol link string to immediately push the application data to lisotech@yahoo.com
+            const subject = encodeURIComponent('New Admission Application: ' + fname + ' ' + lname);
+            const body = encodeURIComponent('New application details submitted:\n\nFirst Name: ' + fname + '\nLast Name: ' + lname + '\nApplicant Email: ' + email + '\nSelected Program: ' + program);
+            
+            // Fires immediately upon clicking Submit Application
+            window.location.href = 'mailto:lisotech@yahoo.com?subject=' + subject + '&body=' + body;
         });
     </script>
 
