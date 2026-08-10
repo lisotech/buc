@@ -224,6 +224,25 @@
         .update-item small {
             color: #64748b;
         }
+        
+        /* PDF Download Button Styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #0b2545;
+        }
 
         footer {
             background-color: var(--primary-color);
@@ -408,6 +427,10 @@
                             <p><strong>Semester Examination Timetables Released</strong></p>
                             <small>Posted: August 10, 2026</small>
                             <p style="font-size: 0.85rem; margin-top: 0.2rem;">Final assessment schedules are now available for download under your respective faculty portals.</p>
+                            <!-- Added PDF Download Button -->
+                            <a href="exam-timetable-2026.pdf" download class="download-btn">
+                                📥 Download Exam Timetable (PDF)
+                            </a>
                         </div>
                         <div class="update-item">
                             <p><strong>Virtual Library Maintenance Notice</strong></p>
