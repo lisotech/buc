@@ -21,128 +21,173 @@
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.5;
+            max-width: 480px;
+            margin: 0 auto;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            min-height: 100vh;
         }
         header {
             background-color: var(--primary-color);
             color: #ffffff;
-            padding: 1rem 2rem;
+            padding: 0.6rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 4px solid var(--accent-color);
+            border-bottom: 3px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
         }
         .logo-area img {
-            width: 60px;
-            height: 60px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #ffffff;
+            border: 1.5px solid #ffffff;
         }
         .logo-text h1 {
-            font-size: 1.5rem;
-            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            line-height: 1.1;
+            font-weight: bold;
         }
         .logo-text p {
-            font-size: 0.85rem;
+            font-size: 0.6rem;
             font-style: italic;
             color: #d1d5db;
         }
-        nav ul {
+        
+        /* Three-line Menu (Hamburger) */
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
             display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 4px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Dropdown Nav for Mobile */
+        nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--primary-color);
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            border-bottom-left-radius: 6px;
+        }
+        nav.active {
+            display: block;
+        }
+        nav ul {
             list-style: none;
-            gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
         }
         nav ul li a {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            padding: 0.75rem 1rem;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            transition: background 0.2s;
         }
         nav ul li a:hover {
-            color: #93c5fd;
+            background-color: var(--secondary-color);
         }
+
         .hero {
             background: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.85)), url('brixton.jpeg') center/cover no-repeat;
             color: #ffffff;
             text-align: center;
-            padding: 5rem 2rem;
+            padding: 3rem 1rem;
         }
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
         }
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
         }
         .btn {
             background-color: var(--accent-color);
             color: #ffffff;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border: none;
             border-radius: 4px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             text-decoration: none;
             font-weight: bold;
+            display: inline-block;
             transition: background 0.3s;
         }
         .btn:hover {
             background-color: #6b0601;
         }
         .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 1rem;
         }
         .section {
             background: #ffffff;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+            padding: 1.5rem 1rem;
+            margin-bottom: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .section h3 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
             border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
         }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        .section p {
+            font-size: 0.9rem;
         }
         form input, form select, form textarea {
             width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
+            padding: 0.6rem;
+            margin-bottom: 0.8rem;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         form label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 500;
+            font-size: 0.85rem;
         }
         footer {
             background-color: var(--primary-color);
             color: #ffffff;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
         }
         footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
     </style>
 </head>
@@ -150,13 +195,18 @@
 
     <header>
         <div class="logo-area">
-            <img src="brixton.jpeg" alt="Brixton University College Logo">
+            <img src="brixton.jpeg" alt="Logo">
             <div class="logo-text">
-                <h1>Brixton University College</h1>
-                <p>Quality, Fortitude and Excellence</p>
+                <h1>Brixton University</h1>
+                <p>Quality, Fortitude & Excellence</p>
             </div>
         </div>
-        <nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="navMenu">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Bio-data</a></li>
@@ -179,88 +229,102 @@
         <!-- Bio-Data Section -->
         <section id="about" class="section">
             <h3>Institution Bio-data</h3>
-            <p>Brixton University College is a premier institution dedicated to delivering higher education rooted in quality instruction, academic fortitude, and professional excellence. Our integrated digital framework empowers learners globally to access accredited programs, interact with leading faculty, and manage their academic lifecycles seamlessly online.</p>
+            <p>Brixton University College is a premier institution dedicated to delivering higher education rooted in quality instruction, academic fortitude, and professional excellence. Our integrated digital framework empowers learners globally to access accredited programs easily online.</p>
         </section>
 
         <!-- Admissions & Registration Section -->
         <section id="admissions" class="section">
-            <h3>Online Recruitment & Student Registration</h3>
-            <p>Join our upcoming academic intake by filling out the prospective student application form below.</p>
-            <br>
+            <h3>Online Recruitment & Registration</h3>
+            <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
             <form>
-                <div class="grid-2">
-                    <div>
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" placeholder="Enter first name" required>
-                    </div>
-                    <div>
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" placeholder="Enter last name" required>
-                    </div>
-                </div>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="First name" required>
+                
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Last name" required>
+
                 <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter active email address" required>
+                <input type="email" id="email" placeholder="Email address" required>
+                
                 <label for="program">Select Program</label>
                 <select id="program">
                     <option value="bsc">Bachelor of Science Programs</option>
                     <option value="ba">Bachelor of Arts & Humanities</option>
                     <option value="mba">Master of Business Administration (MBA)</option>
                 </select>
-                <button type="submit" class="btn">Submit Application</button>
+                <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
             </form>
         </section>
 
         <!-- Teaching Platform (LMS) Section -->
         <section id="lms" class="section">
-            <h3>Virtual Teaching Platform (Student Portal)</h3>
-            <p>Enrolled students can log in to access live lectures, module contents, coursework assignments, and online interaction channels.</p>
-            <br>
-            <form style="max-width: 400px;">
+            <h3>Virtual Teaching Platform</h3>
+            <p style="margin-bottom: 1rem;">Enrolled students log in to access lectures, modules, and coursework.</p>
+            <form>
                 <label for="student_id">Student ID / Username</label>
                 <input type="text" id="student_id" placeholder="Enter Student ID" required>
+                
                 <label for="password">Password</label>
                 <input type="password" id="password" placeholder="Enter Password" required>
-                <button type="submit" class="btn">Access Portal</button>
+                
+                <button type="submit" class="btn" style="width: 100%;">Access Portal</button>
             </form>
         </section>
 
         <!-- Online Payments Section -->
         <section id="payments" class="section">
             <h3>Online Fee Payments</h3>
-            <p>Securely clear tuition, registration, and miscellaneous institutional fees using our integrated payment gateway.</p>
-            <br>
-            <form style="max-width: 500px;">
+            <p style="margin-bottom: 1rem;">Securely clear tuition, registration, and miscellaneous fees.</p>
+            <form>
                 <label for="pay_id">Student ID / Application Reference</label>
                 <input type="text" id="pay_id" placeholder="Enter ID or Reference" required>
+                
                 <label for="fee_type">Fee Category</label>
                 <select id="fee_type">
                     <option value="tuition">Tuition Fee</option>
                     <option value="registration">Registration Fee</option>
                     <option value="exam">Examination Fee</option>
                 </select>
+                
                 <label for="amount">Amount ($)</label>
                 <input type="number" id="amount" placeholder="0.00" required>
-                <button type="submit" class="btn">Proceed to Secure Payment</button>
+                
+                <button type="submit" class="btn" style="width: 100%;">Proceed to Payment</button>
             </form>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="section">
             <h3>Contact Us</h3>
-            <p>For inquiries, admissions support, and institutional communications, reach out through our official email addresses:</p>
-            <br>
-            <ul style="list-style: none;">
-                <li><strong>Primary Email:</strong> brixtoncolllege@gmail.com</li>
-                <li><strong>Alternative Email:</strong> brixtoncollege@yahoo.com</li>
+            <p style="margin-bottom: 0.5rem;">Reach out through our official email addresses:</p>
+            <ul style="list-style: none; font-size: 0.9rem;">
+                <li><strong>Primary:</strong> brixtoncolllege@gmail.com</li>
+                <li><strong>Alternative:</strong> brixtoncollege@yahoo.com</li>
             </ul>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Brixton University College. All rights reserved.</p>
+        <p>&copy; 2026 Brixton University College</p>
         <p>Quality, Fortitude and Excellence</p>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking any nav link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
