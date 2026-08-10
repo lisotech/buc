@@ -364,8 +364,8 @@
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
                 
-                <!-- Application Form configured with Formspree endpoint -->
-                <form action="https://formspree.io/f/xjybyqvo" method="POST" id="applicationForm">
+                <!-- Application Form with Formspree removed and replaced with direct WhatsApp Inquiry trigger -->
+                <form id="applicationForm">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
                     
@@ -381,7 +381,7 @@
                         <option value="Bachelor of Arts & Humanities">Bachelor of Arts & Humanities</option>
                         <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
                     </select>
-                    <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+                    <button type="submit" class="btn" style="width: 100%;">Inquiry</button>
                 </form>
             </section>
 
@@ -499,20 +499,20 @@
             });
         });
 
-        // Form submission handler that integrates Formspree and triggers WhatsApp notification
+        // Form inquiry handler directing application details to WhatsApp (+260974101130)
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
             const email = document.getElementById('email').value;
             const program = document.getElementById('program').value;
 
             const phoneNumber = '260974101130';
-            const message = `Hello Brixton University College, I have submitted my application for registration.\n\n*Applicant Details:*\n- Full Name: ${fname} ${lname}\n- Email: ${email}\n- Selected Program: ${program}`;
+            const message = `Hello Brixton University College, I would like to make an inquiry regarding my application for registration.\n\n*Applicant Details:*\n- Full Name: ${fname} ${lname}\n- Email: ${email}\n- Selected Program: ${program}`;
             
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             
-            // Open WhatsApp chat with prefilled application details in a new tab while Formspree submission proceeds
             window.open(whatsappURL, '_blank');
         });
 
