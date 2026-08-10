@@ -318,8 +318,8 @@
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
                 
-                <!-- Real direct submission setup routing data to lisotech@yahoo.com via Formspree -->
-                <form action="https://formspree.io/f/lisotech@yahoo.com" method="POST" id="applicationForm">
+                <!-- Application Form with WhatsApp redirect integration -->
+                <form id="applicationForm">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
                     
@@ -411,19 +411,27 @@
             });
         });
 
-        // Instant email submission client action script trigger fallback
+        // Redirect application to WhatsApp instantly with a prompt configured according to selection
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
             const email = document.getElementById('email').value;
             const program = document.getElementById('program').value;
 
-            // Creates an instant mailto protocol link string to immediately push the application data to lisotech@yahoo.com
-            const subject = encodeURIComponent('New Admission Application: ' + fname + ' ' + lname);
-            const body = encodeURIComponent('New application details submitted:\n\nFirst Name: ' + fname + '\nLast Name: ' + lname + '\nApplicant Email: ' + email + '\nSelected Program: ' + program);
-            
-            // Fires immediately upon clicking Submit Application
-            window.location.href = 'mailto:lisotech@yahoo.com?subject=' + subject + '&body=' + body;
+            // Business phone number format for WhatsApp (using 260974101130)
+            const phoneNumber = '260974101130';
+
+            // Constructing the detailed prompt/message payload based on the user's input selections
+            const message = `Hello Brixton University College, I would like to submit my application for registration.\n\n*Applicant Details:*\n- Full Name: ${fname} ${lname}\n- Email: ${email}\n- Selected Program: ${program}`;
+
+            // Encode the message text for URL usage
+            const encodedMessage = encodeURIComponent(message);
+
+            // Open WhatsApp with the generated prompt
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
         });
     </script>
 
