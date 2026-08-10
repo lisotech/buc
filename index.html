@@ -364,7 +364,7 @@
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
                 
-                <!-- Application Form with Inquiry WhatsApp Trigger -->
+                <!-- Application Form configured to automatically open WhatsApp -->
                 <form id="applicationForm">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
@@ -427,7 +427,7 @@
                             <p><strong>Semester Examination Timetables Released</strong></p>
                             <small>Posted: August 10, 2026</small>
                             <p style="font-size: 0.85rem; margin-top: 0.2rem;">Final assessment schedules are now available for download under your respective faculty portals.</p>
-                            <!-- PDF Download Button renamed to exam-timetable.pdf -->
+                            <!-- PDF Download Button -->
                             <a href="exam-timetable.pdf" download class="download-btn">
                                 📥 Download Exam Timetable (PDF)
                             </a>
@@ -499,7 +499,7 @@
             });
         });
 
-        // Form inquiry handler directing application details to WhatsApp (+260974101130)
+        // Form inquiry handler forcing automatic redirect to WhatsApp (+260974101130)
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const fname = document.getElementById('fname').value;
@@ -513,7 +513,8 @@
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             
-            window.open(whatsappURL, '_blank');
+            // Automatically open WhatsApp window/tab
+            window.location.href = whatsappURL;
         });
 
         // Student Portal Login / Dashboard Controller
