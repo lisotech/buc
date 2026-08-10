@@ -318,8 +318,8 @@
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
                 
-                <!-- Application Form with WhatsApp redirect integration -->
-                <form id="applicationForm">
+                <!-- Application Form configured with Formspree endpoint -->
+                <form action="https://formspree.io/f/xjybyqvo" method="POST" id="applicationForm">
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
                     
@@ -411,26 +411,20 @@
             });
         });
 
-        // Redirect application to WhatsApp instantly with a prompt configured according to selection
+        // Form submission handler that also triggers WhatsApp notification with selected program details
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
             const email = document.getElementById('email').value;
             const program = document.getElementById('program').value;
 
-            // Business phone number format for WhatsApp (using 260974101130)
             const phoneNumber = '260974101130';
-
-            // Constructing the detailed prompt/message payload based on the user's input selections
-            const message = `Hello Brixton University College, I would like to submit my application for registration.\n\n*Applicant Details:*\n- Full Name: ${fname} ${lname}\n- Email: ${email}\n- Selected Program: ${program}`;
-
-            // Encode the message text for URL usage
+            const message = `Hello Brixton University College, I have submitted my application for registration.\n\n*Applicant Details:*\n- Full Name: ${fname} ${lname}\n- Email: ${email}\n- Selected Program: ${program}`;
+            
             const encodedMessage = encodeURIComponent(message);
-
-            // Open WhatsApp with the generated prompt
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp chat with prefilled application details in a new tab
             window.open(whatsappURL, '_blank');
         });
     </script>
