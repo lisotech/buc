@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brixton University College | Quality, Fortitude and Excellence</title>
+    <!-- Circled Logo in the Web Head Section -->
+    <link rel="icon" type="image/png" href="log.png">
+    <!-- Tailwind CSS for modern responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        collegeBlue: '#1e3a8a',
+                        collegeRed: '#b91c1c',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Navigation Bar with Compact Height (py-2), White Background for Logo Visibility & Top-Right Mobile Menu Dropdown -->
+    <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center relative">
+            <div class="flex items-center space-x-2">
+                <!-- Circled Logo Image with clear background for visibility -->
+                <div class="h-8 w-8 rounded-full overflow-hidden border border-gray-300 shadow-sm flex items-center justify-center bg-white">
+                    <img src="log.png" alt="Brixton University College Logo" class="h-full w-full object-cover">
+                </div>
+                <div>
+                    <span class="text-base font-bold text-collegeBlue block leading-tight">BRIXTON UNIVERSITY</span>
+                    <span class="text-[10px] tracking-widest text-collegeRed font-semibold block">COLLEGE</span>
+                </div>
+            </div>
+
+            <!-- Desktop Menu Links -->
+            <div class="hidden md:flex space-x-6 font-medium text-sm text-gray-700 items-center">
+                <a href="#home" class="hover:text-collegeBlue transition">Home</a>
+                <a href="#about" class="hover:text-collegeBlue transition">About</a>
+                <a href="#courses" class="hover:text-collegeBlue transition">Courses</a>
+                <a href="#short-courses" class="hover:text-collegeBlue transition">Skills Short Courses</a>
+                <a href="#portal" class="hover:text-collegeBlue transition font-semibold text-collegeRed">Student Portal</a>
+                <a href="#contact" class="hover:text-collegeBlue transition">Contact</a>
+            </div>
+
+            <!-- Mobile Menu 3-Lines (Hamburger) Button -->
+            <div class="md:hidden flex items-center">
+                <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-collegeBlue focus:outline-none p-1 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Top-Right Absolute Mobile Dropdown Menu Card -->
+            <div id="mobileMenu" class="hidden absolute top-full right-4 mt-1 w-56 bg-white border border-gray-200 rounded-xl shadow-xl py-2 z-50 flex flex-col space-y-1 text-sm">
+                <a href="#home" onclick="toggleMobileMenu()" class="px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Home</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">About</a>
+                <a href="#courses" onclick="toggleMobileMenu()" class="px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Courses</a>
+                <a href="#short-courses" onclick="toggleMobileMenu()" class="px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Skills Short Courses</a>
+                <a href="#portal" onclick="toggleMobileMenu()" class="px-4 py-2 text-collegeRed hover:bg-gray-100 font-semibold">Student Portal</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Action Buttons (WhatsApp & Phone Call) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
+        <!-- WhatsApp Floating Button (Dark Green) -->
+        <a href="https://wa.me/260972133194" target="_blank" aria-label="Chat on WhatsApp" class="bg-emerald-700 hover:bg-emerald-800 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 text-2xl">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- Phone Call Floating Button (Green with icon inside, flipped direction using scale-x-[-1]) -->
+        <a href="tel:+260972133194" aria-label="Call Us" class="bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 text-xl">
+            <i class="fas fa-phone-alt scale-x-[-1]"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-collegeBlue to-blue-900 text-white py-20 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="bg-collegeRed text-xs uppercase px-3 py-1 rounded-full font-bold tracking-wider">Welcome to Brixton</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 leading-tight">Shaping Future Leaders Through Excellence</h1>
+                <p class="text-gray-200 text-lg mb-8">Discover world-class academic degree programs, professional certifications, and flexible short skills courses designed for the modern job market.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="openApplyModal()" class="bg-collegeRed hover:bg-red-800 text-white px-6 py-3 rounded-lg font-bold transition shadow">Apply Now</button>
+                    <a href="#courses" class="bg-white text-collegeBlue hover:bg-gray-100 px-6 py-3 rounded-lg font-bold transition shadow">Explore Courses</a>
+                    <a href="#portal" class="border-2 border-white hover:bg-white hover:text-collegeBlue text-white px-6 py-3 rounded-lg font-bold transition">Student Portal Login</a>
+                </div>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 text-white"><i class="fas fa-bullhorn mr-2 text-yellow-400"></i> Announcements</h3>
+                <div class="space-y-4 text-sm">
+                    <div class="bg-white/10 p-3 rounded-lg">
+                        <span class="text-yellow-300 font-semibold text-xs">August 10, 2026</span>
+                        <p class="font-medium">Registration for the 2026 Academic Semester is now officially open across all faculties.</p>
+                    </div>
+                    <div class="bg-white/10 p-3 rounded-lg">
+                        <span class="text-yellow-300 font-semibold text-xs">August 05, 2026</span>
+                        <p class="font-medium">New intake schedules for Skills Short Courses released on the student portal dashboards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-collegeBlue mb-4">About Brixton University College</h2>
+            <div class="h-1 w-20 bg-collegeRed mx-auto mb-4"></div>
+            <p class="text-gray-600">Guided by our core motto — <strong class="text-collegeBlue">Quality, Fortitude and Excellence</strong> — we cultivate intellectual rigor, creative problem-solving, and practical vocational readiness.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-collegeBlue">
+                <div class="text-3xl text-collegeBlue mb-4"><i class="fas fa-award"></i></div>
+                <h3 class="text-xl font-bold mb-2">Quality Education</h3>
+                <p class="text-gray-600 text-sm">Accredited curricula crafted by expert academics and industry leaders to meet rigorous global standards.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-collegeRed">
+                <div class="text-3xl text-collegeRed mb-4"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="text-xl font-bold mb-2">Fortitude</h3>
+                <p class="text-gray-600 text-sm">Building resilient leaders equipped to navigate and conquer challenges in dynamic professional environments.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-collegeBlue">
+                <div class="text-3xl text-collegeBlue mb-4"><i class="fas fa-star"></i></div>
+                <h3 class="text-xl font-bold mb-2">Excellence</h3>
+                <p class="text-gray-600 text-sm">A commitment to outstanding achievement in teaching, student support, innovation, and research.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="bg-gray-100 py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-collegeBlue mb-4">Degree & Diploma Programs</h2>
+                <div class="h-1 w-20 bg-collegeRed mx-auto mb-4"></div>
+                <p class="text-gray-600">Choose from our diverse range of full-time and part-time selection of professional courses.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="bg-collegeBlue text-white py-3 px-6 font-bold">Faculty of Computing & IT</div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">BSc in Software Engineering</h3>
+                            <p class="text-gray-600 text-sm mb-4">Master modern web development, programming languages, database structures, and software architecture.</p>
+                            <span class="text-xs bg-blue-100 text-collegeBlue px-2 py-1 rounded font-semibold">Duration: 4 Years</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openApplyModal()" class="w-full bg-collegeBlue hover:bg-blue-900 text-white py-2 rounded-lg font-medium transition">Apply For Course</button>
+                    </div>
+                </div>
+                <!-- Course 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="bg-collegeBlue text-white py-3 px-6 font-bold">Faculty of Business & Economics</div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Bachelor of Business Administration</h3>
+                            <p class="text-gray-600 text-sm mb-4">Gain comprehensive knowledge in corporate governance, financial management, marketing, and entrepreneurship.</p>
+                            <span class="text-xs bg-blue-100 text-collegeBlue px-2 py-1 rounded font-semibold">Duration: 3 Years</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openApplyModal()" class="w-full bg-collegeBlue hover:bg-blue-900 text-white py-2 rounded-lg font-medium transition">Apply For Course</button>
+                    </div>
+                </div>
+                <!-- Course 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="bg-collegeBlue text-white py-3 px-6 font-bold">Faculty of Social Sciences</div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">BA in Public Administration</h3>
+                            <p class="text-gray-600 text-sm mb-4">Equip yourself with policy analysis skills, organizational leadership, and public sector governance expertise.</p>
+                            <span class="text-xs bg-blue-100 text-collegeBlue px-2 py-1 rounded font-semibold">Duration: 3 Years</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openApplyModal()" class="w-full bg-collegeBlue hover:bg-blue-900 text-white py-2 rounded-lg font-medium transition">Apply For Course</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Short Courses Section -->
+    <section id="short-courses" class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-collegeBlue mb-4">Skills Short Courses</h2>
+            <div class="h-1 w-20 bg-collegeRed mx-auto mb-4"></div>
+            <p class="text-gray-600">Boost your resume with intensive, practical short courses designed for quick career advancement.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-collegeRed text-2xl mb-3"><i class="fas fa-bullhorn"></i></div>
+                <h3 class="font-bold text-lg mb-1">Digital Marketing</h3>
+                <p class="text-xs text-gray-500 mb-4">Duration: 3 Months</p>
+                <p class="text-gray-600 text-sm mb-4">Learn social media advertising, SEO, and content creation strategies.</p>
+                <button onclick="openApplyModal()" class="text-sm text-collegeBlue font-bold hover:underline">Enroll Now &rarr;</button>
+            </div>
+            <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-collegeRed text-2xl mb-3"><i class="fas fa-laptop-code"></i></div>
+                <h3 class="font-bold text-lg mb-1">Web Development</h3>
+                <p class="text-xs text-gray-500 mb-4">Duration: 3 Months</p>
+                <p class="text-gray-600 text-sm mb-4">Build fully responsive websites using HTML, CSS, JavaScript, and PHP.</p>
+                <button onclick="openApplyModal()" class="text-sm text-collegeBlue font-bold hover:underline">Enroll Now &rarr;</button>
+            </div>
+            <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-collegeRed text-2xl mb-3"><i class="fas fa-calculator"></i></div>
+                <h3 class="font-bold text-lg mb-1">Practical Bookkeeping</h3>
+                <p class="text-xs text-gray-500 mb-4">Duration: 2 Months</p>
+                <p class="text-gray-600 text-sm mb-4">Master basic corporate accounting records, ledger management, and financial statements.</p>
+                <button onclick="openApplyModal()" class="text-sm text-collegeBlue font-bold hover:underline">Enroll Now &rarr;</button>
+            </div>
+            <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-collegeRed text-2xl mb-3"><i class="fas fa-users"></i></div>
+                <h3 class="font-bold text-lg mb-1">Project Management</h3>
+                <p class="text-xs text-gray-500 mb-4">Duration: 3 Months</p>
+                <p class="text-gray-600 text-sm mb-4">Learn project life cycles, risk assessment, and resource allocation frameworks.</p>
+                <button onclick="openApplyModal()" class="text-sm text-collegeBlue font-bold hover:underline">Enroll Now &rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Portal Section -->
+    <section id="portal" class="bg-blue-900 text-white py-16 px-4">
+        <div class="max-w-4xl mx-auto bg-white text-gray-800 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="bg-collegeBlue text-white p-6 text-center">
+                <h2 class="text-2xl font-bold"><i class="fas fa-user-graduate mr-2"></i> Student Portal Access</h2>
+                <p class="text-blue-200 text-sm mt-1">Enter your assigned Student ID to log in (e.g., <span class="bg-white/20 px-2 py-0.5 rounded text-white font-mono">BUC123456-2026</span>)</p>
+            </div>
+            
+            <!-- Login View -->
+            <div id="loginView" class="p-8">
+                <div class="max-w-md mx-auto space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Student ID Number</label>
+                        <input type="text" id="studentIdInput" placeholder="BUC123456-2026" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-collegeBlue focus:outline-none uppercase font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" placeholder="••••••••" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-collegeBlue focus:outline-none">
+                    </div>
+                    <button onclick="handleLogin()" class="w-full bg-collegeRed hover:bg-red-800 text-white py-3 rounded-lg font-bold transition shadow">Login to Portal</button>
+                    <p id="loginError" class="text-red-600 text-sm text-center hidden">Please enter a valid student ID format matching BUCXXXXXX-YYYY.</p>
+                </div>
+            </div>
+
+            <!-- Dashboard View (Hidden by default) -->
+            <div id="dashboardView" class="p-8 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b mb-6 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-collegeBlue">Welcome, Student <span id="displayStudentId" class="font-mono text-collegeRed"></span></h3>
+                        <p class="text-xs text-gray-500">Status: <span class="text-green-600 font-semibold">Active Enrollment (2026 Academic Year)</span></p>
+                    </div>
+                    <button onclick="handleLogout()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition">Logout</button>
+                </div>
+
+                <!-- Portal Tabs Nav -->
+                <div class="flex space-x-2 border-b mb-6 overflow-x-auto">
+                    <button onclick="switchTab('lessons')" id="tabBtnLessons" class="px-4 py-2 font-bold text-collegeBlue border-b-2 border-collegeBlue whitespace-nowrap">1. Lessons Access</button>
+                    <button onclick="switchTab('timetable')" id="tabBtnTimetable" class="px-4 py-2 font-medium text-gray-500 hover:text-collegeBlue whitespace-nowrap">2. Timetable & Download</button>
+                    <button onclick="switchTab('notices')" id="tabBtnNotices" class="px-4 py-2 font-medium text-gray-500 hover:text-collegeBlue whitespace-nowrap">3. Updates & Upcoming Notices</button>
+                </div>
+
+                <!-- Tab 1: Lessons -->
+                <div id="tabContentLessons" class="space-y-4">
+                    <h4 class="font-bold text-lg mb-2">Enrolled Course Modules</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="border p-4 rounded-xl bg-gray-50 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs bg-blue-100 text-collegeBlue px-2 py-0.5 rounded font-semibold">Module 101</span>
+                                <h5 class="font-bold mt-1">Advanced Web Architecture</h5>
+                                <p class="text-xs text-gray-500">Lecturer: Prof. M. Banda</p>
+                            </div>
+                            <button onclick="alert('Opening lesson materials and video stream...')" class="bg-collegeBlue text-white px-3 py-1.5 rounded text-sm">Access Lesson</button>
+                        </div>
+                        <div class="border p-4 rounded-xl bg-gray-50 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs bg-blue-100 text-collegeBlue px-2 py-0.5 rounded font-semibold">Module 102</span>
+                                <h5 class="font-bold mt-1">Database Management Systems</h5>
+                                <p class="text-xs text-gray-500">Lecturer: Dr. J. Phiri</p>
+                            </div>
+                            <button onclick="alert('Opening lesson materials and video stream...')" class="bg-collegeBlue text-white px-3 py-1.5 rounded text-sm">Access Lesson</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Timetable -->
+                <div id="tabContentTimetable" class="space-y-4 hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="font-bold text-lg">Semester Examination & Class Timetable</h4>
+                        <!-- Downloadable exam-timetable link simulation -->
+                        <a id="downloadExamTimetableBtn" href="data:text/plain;charset=utf-8,Brixton%20University%20College%20-%20Official%20Exam%20Timetable%0A%0AMonday:%20Advanced%20Web%20Architecture%20(09:00%20-%2011:30)%20-%20Lab%203%0AWednesday:%20Database%20Management%20Systems%20(14:00%20-%2016:30)%20-%20Hall%20B" download="exam-timetable.txt" class="bg-collegeRed hover:bg-red-800 text-white px-4 py-2 rounded text-sm font-semibold transition inline-flex items-center"><i class="fas fa-download mr-1"></i> Download exam-timetable</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 text-xs uppercase text-gray-600">
+                                    <th class="p-3 border">Day</th>
+                                    <th class="p-3 border">Time</th>
+                                    <th class="p-3 border">Subject</th>
+                                    <th class="p-3 border">Venue</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr>
+                                    <td class="p-3 border font-semibold">Monday</td>
+                                    <td class="p-3 border">09:00 - 11:30</td>
+                                    <td class="p-3 border">Advanced Web Architecture</td>
+                                    <td class="p-3 border">Lab 3 / Online</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border font-semibold">Wednesday</td>
+                                    <td class="p-3 border">14:00 - 16:30</td>
+                                    <td class="p-3 border">Database Management Systems</td>
+                                    <td class="p-3 border">Hall B</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Notices -->
+                <div id="tabContentNotices" class="space-y-4 hidden">
+                    <h4 class="font-bold text-lg mb-2">Campus Updates & Upcoming Notices</h4>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                            <div class="flex justify-between text-xs text-gray-500 mb-1">
+                                <span class="font-bold text-yellow-800">NOTICE</span>
+                                <span>August 10, 2026</span>
+                            </div>
+                            <h5 class="font-bold text-gray-800">Mid-Semester Assessment Schedule</h5>
+                            <p class="text-sm text-gray-600 mt-1">Mid-semester quizzes will take place beginning next week. Ensure all online assignments are submitted via the portal.</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 border-l-4 border-collegeBlue rounded">
+                            <div class="flex justify-between text-xs text-gray-500 mb-1">
+                                <span class="font-bold text-collegeBlue">EVENT</span>
+                                <span>August 15, 2026</span>
+                            </div>
+                            <h5 class="font-bold text-gray-800">Annual Tech & Innovation Seminar</h5>
+                            <p class="text-sm text-gray-600 mt-1">All computing and business students are invited to join the guest lecture conference at the main auditorium.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="h-8 w-8 rounded-full overflow-hidden border border-gray-700 bg-white flex items-center justify-center">
+                        <img src="log.png" alt="Logo" class="h-full w-full object-cover">
+                    </div>
+                    <span class="text-lg font-bold text-white tracking-wide">BRIXTON UNIVERSITY COLLEGE</span>
+                </div>
+                <p class="text-sm text-gray-400 mb-4">Committed to fostering academic excellence, intellectual fortitude, and comprehensive professional growth.</p>
+                <p class="text-xs text-gray-500 italic">Motto: Quality, Fortitude and Excellence</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#courses" class="hover:text-white transition">Degree Programs</a></li>
+                    <li><a href="#courses" class="hover:text-white transition">Diploma Programs</a></li>
+                    <li><a href="#short-courses" class="hover:text-white transition">Skills Short Courses</a></li>
+                    <li><a href="#portal" class="hover:text-white transition">Student Portal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contact Information</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><i class="fas fa-map-marker-alt text-collegeRed mr-2"></i> Main Campus, Lusaka, Zambia</li>
+                    <li><i class="fas fa-phone text-collegeRed mr-2"></i> Phone: +260972133194 / WhatsApp: +260972133194</li>
+                    <li><i class="fas fa-envelope text-collegeRed mr-2"></i> Primary: brixtoncollmlege@gmail.com</li>
+                    <li><i class="fas fa-envelope text-collegeRed mr-2"></i> Board Admin: brixtoncollege@yahoo.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+            &copy; 2026 Brixton University College. All rights reserved. Designed with responsiveness and high-performance standards.
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div id="applyModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative animate-fade-in">
+            <button onclick="closeApplyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl"><i class="fas fa-times"></i></button>
+            <h3 class="text-2xl font-bold text-collegeBlue mb-2">Apply to Brixton University College</h3>
+            <p class="text-xs text-gray-500 mb-6">Fill out your details below and our admissions team will contact you via email or phone.</p>
+            <form onsubmit="handleApplySubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" required placeholder="John Doe" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-collegeBlue">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" required placeholder="john@example.com" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-collegeBlue">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="+260972133194" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-collegeBlue">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Select Program of Interest</label>
+                    <select class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-collegeBlue">
+                        <option>BSc in Software Engineering</option>
+                        <option>Bachelor of Business Administration</option>
+                        <option>BA in Public Administration</option>
+                        <option>Diploma Program</option>
+                        <option>Short Course: Digital Marketing</option>
+                        <option>Short Course: Web Development</option>
+                        <option>Short Course: Practical Bookkeeping</option>
+                        <option>Short Course: Project Management</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-collegeRed hover:bg-red-800 text-white py-3 rounded-lg font-bold transition shadow">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Top-Right Mobile Menu Toggle Function
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal Controls
+        function openApplyModal() {
+            document.getElementById('applyModal').classList.remove('hidden');
+        }
+        function closeApplyModal() {
+            document.getElementById('applyModal').classList.add('hidden');
+        }
+        function handleApplySubmit(e) {
+            e.preventDefault();
+            alert('Application submitted successfully! Our admissions office will get in touch with you shortly.');
+            closeApplyModal();
+        }
+
+        // Student Portal Simulation
+        function handleLogin() {
+            const studentIdInput = document.getElementById('studentIdInput').value.trim();
+            const errorElement = document.getElementById('loginError');
+            
+            if(studentIdInput.length > 5) {
+                errorElement.classList.add('hidden');
+                document.getElementById('loginView').classList.add('hidden');
+                document.getElementById('dashboardView').classList.remove('hidden');
+                document.getElementById('displayStudentId').innerText = studentIdInput;
+            } else {
+                errorElement.classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            document.getElementById('dashboardView').classList.add('hidden');
+            document.getElementById('loginView').classList.remove('hidden');
+            document.getElementById('studentIdInput').value = '';
+        }
+
+        // Portal Tabs Switcher
+        function switchTab(tabName) {
+            document.getElementById('tabContentLessons').classList.add('hidden');
+            document.getElementById('tabContentTimetable').classList.add('hidden');
+            document.getElementById('tabContentNotices').classList.add('hidden');
+
+            document.getElementById('tabBtnLessons').className = "px-4 py-2 font-medium text-gray-500 hover:text-collegeBlue whitespace-nowrap border-b-2 border-transparent";
+            document.getElementById('tabBtnTimetable').className = "px-4 py-2 font-medium text-gray-500 hover:text-collegeBlue whitespace-nowrap border-b-2 border-transparent";
+            document.getElementById('tabBtnNotices').className = "px-4 py-2 font-medium text-gray-500 hover:text-collegeBlue whitespace-nowrap border-b-2 border-transparent";
+
+            if(tabName === 'lessons') {
+                document.getElementById('tabContentLessons').classList.remove('hidden');
+                document.getElementById('tabBtnLessons').className = "px-4 py-2 font-bold text-collegeBlue border-b-2 border-collegeBlue whitespace-nowrap";
+            } else if(tabName === 'timetable') {
+                document.getElementById('tabContentTimetable').classList.remove('hidden');
+                document.getElementById('tabBtnTimetable').className = "px-4 py-2 font-bold text-collegeBlue border-b-2 border-collegeBlue whitespace-nowrap";
+            } else if(tabName === 'notices') {
+                document.getElementById('tabContentNotices').classList.remove('hidden');
+                document.getElementById('tabBtnNotices').className = "px-4 py-2 font-bold text-collegeBlue border-b-2 border-collegeBlue whitespace-nowrap";
+            }
+        }
+    </script>
+</body>
+</html>
