@@ -317,18 +317,19 @@
             <section id="admissions" class="section">
                 <h3>Online Recruitment & Registration</h3>
                 <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
-                <form>
+                <!-- Form configured to send application details directly to lisotech@yahoo.com using Formspree (or mailto fallback) -->
+                <form action="https://formspree.io/f/lisotech@yahoo.com" method="POST" id="applicationForm">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" placeholder="Enter first name" required>
+                    <input type="text" id="fname" name="firstname" placeholder="Enter first name" required>
                     
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" placeholder="Enter last name" required>
+                    <input type="text" id="lname" name="lastname" placeholder="Enter last name" required>
 
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="Enter active email address" required>
+                    <input type="email" id="email" name="email" placeholder="Enter active email address" required>
                     
                     <label for="program">Select Program</label>
-                    <select id="program">
+                    <select id="program" name="program">
                         <option value="bsc">Bachelor of Science Programs</option>
                         <option value="ba">Bachelor of Arts & Humanities</option>
                         <option value="mba">Master of Business Administration (MBA)</option>
@@ -379,8 +380,8 @@
                 <h3>Contact Us</h3>
                 <p style="margin-bottom: 0.5rem;">For inquiries and admissions support, reach out through our official email addresses:</p>
                 <ul style="list-style: none; font-size: 0.9rem;">
-                    <li><strong>Primary Email:</strong> brixtoncolllege@gmail.com</li>
-                    <li><strong>Alternative Email:</strong> brixtoncollege@yahoo.com</li>
+                    <li><strong>Primary Email:</strong> lisotech@yahoo.com</li>
+                    <li><strong>Alternative Email:</strong> lisotech@yahoo.com</li>
                 </ul>
             </section>
 
@@ -407,6 +408,21 @@
                     navMenu.classList.remove('active');
                 }
             });
+        });
+
+        // Handle form submission to mailto client-side fallback/immediate trigger
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const email = document.getElementById('email').value;
+            const program = document.getElementById('program').value;
+
+            // Creates a real mailto link payload to trigger user's mail client instantly with application details
+            const subject = encodeURIComponent('New Student Application - ' + fname + ' ' + lname);
+            const body = encodeURIComponent('New application submitted:\n\nName: ' + fname + ' ' + lname + '\nEmail: ' + email + '\nProgram: ' + program);
+            
+            // Open user's email client addressed directly to lisotech@yahoo.com
+            window.location.href = 'mailto:lisotech@yahoo.com?subject=' + subject + '&body=' + body;
         });
     </script>
 
