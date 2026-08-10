@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brixton University College</title>
+    <!-- Add the circled logo in the browser tab title / favicon -->
+    <link rel="icon" type="image/png" href="log.png">
     <style>
         :root {
             --primary-color: #0b2545;
@@ -22,16 +24,23 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.5;
-            max-width: 480px;
-            margin: 0 auto;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
             min-height: 100vh;
         }
+
+        /* Fully responsive wrapper: mobile-friendly view by default, expands to full screen on desktop */
+        .page-wrapper {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            min-height: 100vh;
+        }
+
+        /* Resized small header */
         header {
             background-color: var(--primary-color);
             color: #ffffff;
-            padding: 0.6rem 1rem;
+            padding: 0.4rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -46,19 +55,19 @@
             gap: 0.5rem;
         }
         .logo-area img {
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             object-fit: cover;
             border: 1.5px solid #ffffff;
         }
         .logo-text h1 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.1;
             font-weight: bold;
         }
         .logo-text p {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             font-style: italic;
             color: #d1d5db;
         }
@@ -88,7 +97,7 @@
             top: 100%;
             right: 0;
             background-color: var(--primary-color);
-            width: 200px;
+            width: 220px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             border-bottom-left-radius: 6px;
         }
@@ -146,6 +155,8 @@
         }
         .container {
             padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .section {
             background: #ffffff;
@@ -189,126 +200,189 @@
         footer p {
             margin-bottom: 0.3rem;
         }
+
+        /* Desktop Computer Full Screen Adjustments */
+        @media (min-width: 768px) {
+            header {
+                padding: 0.6rem 2rem;
+            }
+            .logo-area img {
+                width: 38px;
+                height: 38px;
+            }
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+            .logo-text p {
+                font-size: 0.65rem;
+            }
+            .menu-toggle {
+                display: none; /* Hide 3-line menu on large screens, show standard horizontal links */
+            }
+            nav {
+                display: block !important;
+                position: static;
+                width: auto;
+                background: transparent;
+                box-shadow: none;
+            }
+            nav ul {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+            nav ul li a {
+                border-bottom: none;
+                padding: 0;
+            }
+            nav ul li a:hover {
+                background-color: transparent;
+                color: #93c5fd;
+            }
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                padding: 2.5rem 2rem;
+            }
+            .container .section#about {
+                grid-column: span 2;
+            }
+            .container .section#contact {
+                grid-column: span 2;
+            }
+            .hero {
+                padding: 5rem 2rem;
+            }
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-area">
-            <img src="brixton.jpeg" alt="Logo">
-            <div class="logo-text">
-                <h1>Brixton University</h1>
-                <p>Quality, Fortitude & Excellence</p>
+    <div class="page-wrapper">
+        <header>
+            <div class="logo-area">
+                <!-- Using log.png as requested -->
+                <img src="log.png" alt="Brixton University College Logo">
+                <div class="logo-text">
+                    <h1>Brixton University College</h1>
+                    <p>Quality, Fortitude & Excellence</p>
+                </div>
             </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Bio-data</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#lms">Teaching Platform</a></li>
+                    <li><a href="#payments">Payments</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="home" class="hero">
+            <h2>Welcome to Brixton University College</h2>
+            <p>"Quality, Fortitude and Excellence"</p>
+            <a href="#admissions" class="btn">Apply For Registration</a>
+        </section>
+
+        <div class="container">
+            
+            <!-- Bio-Data Section -->
+            <section id="about" class="section">
+                <h3>Institution Bio-data</h3>
+                <p>Brixton University College is a premier institution dedicated to delivering higher education rooted in quality instruction, academic fortitude, and professional excellence. Our integrated digital framework empowers learners globally to access accredited programs, interact with leading faculty, and manage their academic lifecycles seamlessly online.</p>
+            </section>
+
+            <!-- Admissions & Registration Section -->
+            <section id="admissions" class="section">
+                <h3>Online Recruitment & Registration</h3>
+                <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
+                <form>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" placeholder="Enter first name" required>
+                    
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" placeholder="Enter last name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter active email address" required>
+                    
+                    <label for="program">Select Program</label>
+                    <select id="program">
+                        <option value="bsc">Bachelor of Science Programs</option>
+                        <option value="ba">Bachelor of Arts & Humanities</option>
+                        <option value="mba">Master of Business Administration (MBA)</option>
+                    </select>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+                </form>
+            </section>
+
+            <!-- Teaching Platform (LMS) Section -->
+            <section id="lms" class="section">
+                <h3>Virtual Teaching Platform</h3>
+                <p style="margin-bottom: 1rem;">Enrolled students log in to access live lectures, modules, and coursework.</p>
+                <form>
+                    <label for="student_id">Student ID / Username</label>
+                    <input type="text" id="student_id" placeholder="Enter Student ID" required>
+                    
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Access Portal</button>
+                </form>
+            </section>
+
+            <!-- Online Payments Section -->
+            <section id="payments" class="section">
+                <h3>Online Fee Payments</h3>
+                <p style="margin-bottom: 1rem;">Securely clear tuition, registration, and miscellaneous fees.</p>
+                <form>
+                    <label for="pay_id">Student ID / Application Reference</label>
+                    <input type="text" id="pay_id" placeholder="Enter ID or Reference" required>
+                    
+                    <label for="fee_type">Fee Category</label>
+                    <select id="fee_type">
+                        <option value="tuition">Tuition Fee</option>
+                        <option value="registration">Registration Fee</option>
+                        <option value="exam">Examination Fee</option>
+                    </select>
+                    
+                    <label for="amount">Amount ($)</label>
+                    <input type="number" id="amount" placeholder="0.00" required>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Proceed to Secure Payment</button>
+                </form>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h3>Contact Us</h3>
+                <p style="margin-bottom: 0.5rem;">For inquiries and admissions support, reach out through our official email addresses:</p>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li><strong>Primary Email:</strong> brixtoncolllege@gmail.com</li>
+                    <li><strong>Alternative Email:</strong> brixtoncollege@yahoo.com</li>
+                </ul>
+            </section>
+
         </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav id="navMenu">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Bio-data</a></li>
-                <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#lms">Teaching Platform</a></li>
-                <li><a href="#payments">Payments</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="home" class="hero">
-        <h2>Welcome to Brixton University College</h2>
-        <p>"Quality, Fortitude and Excellence"</p>
-        <a href="#admissions" class="btn">Apply For Registration</a>
-    </section>
-
-    <div class="container">
-        
-        <!-- Bio-Data Section -->
-        <section id="about" class="section">
-            <h3>Institution Bio-data</h3>
-            <p>Brixton University College is a premier institution dedicated to delivering higher education rooted in quality instruction, academic fortitude, and professional excellence. Our integrated digital framework empowers learners globally to access accredited programs easily online.</p>
-        </section>
-
-        <!-- Admissions & Registration Section -->
-        <section id="admissions" class="section">
-            <h3>Online Recruitment & Registration</h3>
-            <p style="margin-bottom: 1rem;">Join our upcoming academic intake by filling out the application form below.</p>
-            <form>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" placeholder="First name" required>
-                
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" placeholder="Last name" required>
-
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Email address" required>
-                
-                <label for="program">Select Program</label>
-                <select id="program">
-                    <option value="bsc">Bachelor of Science Programs</option>
-                    <option value="ba">Bachelor of Arts & Humanities</option>
-                    <option value="mba">Master of Business Administration (MBA)</option>
-                </select>
-                <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
-            </form>
-        </section>
-
-        <!-- Teaching Platform (LMS) Section -->
-        <section id="lms" class="section">
-            <h3>Virtual Teaching Platform</h3>
-            <p style="margin-bottom: 1rem;">Enrolled students log in to access lectures, modules, and coursework.</p>
-            <form>
-                <label for="student_id">Student ID / Username</label>
-                <input type="text" id="student_id" placeholder="Enter Student ID" required>
-                
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" required>
-                
-                <button type="submit" class="btn" style="width: 100%;">Access Portal</button>
-            </form>
-        </section>
-
-        <!-- Online Payments Section -->
-        <section id="payments" class="section">
-            <h3>Online Fee Payments</h3>
-            <p style="margin-bottom: 1rem;">Securely clear tuition, registration, and miscellaneous fees.</p>
-            <form>
-                <label for="pay_id">Student ID / Application Reference</label>
-                <input type="text" id="pay_id" placeholder="Enter ID or Reference" required>
-                
-                <label for="fee_type">Fee Category</label>
-                <select id="fee_type">
-                    <option value="tuition">Tuition Fee</option>
-                    <option value="registration">Registration Fee</option>
-                    <option value="exam">Examination Fee</option>
-                </select>
-                
-                <label for="amount">Amount ($)</label>
-                <input type="number" id="amount" placeholder="0.00" required>
-                
-                <button type="submit" class="btn" style="width: 100%;">Proceed to Payment</button>
-            </form>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h3>Contact Us</h3>
-            <p style="margin-bottom: 0.5rem;">Reach out through our official email addresses:</p>
-            <ul style="list-style: none; font-size: 0.9rem;">
-                <li><strong>Primary:</strong> brixtoncolllege@gmail.com</li>
-                <li><strong>Alternative:</strong> brixtoncollege@yahoo.com</li>
-            </ul>
-        </section>
-
+        <footer>
+            <p>&copy; 2026 Brixton University College. All rights reserved.</p>
+            <p>Quality, Fortitude and Excellence</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Brixton University College</p>
-        <p>Quality, Fortitude and Excellence</p>
-    </footer>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
@@ -318,10 +392,12 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking any nav link
+        // Close menu when clicking any nav link on mobile screens
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+                if (window.innerWidth < 768) {
+                    navMenu.classList.remove('active');
+                }
             });
         });
     </script>
